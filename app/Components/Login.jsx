@@ -14,7 +14,10 @@ export default function Login() {
   const {updateUser} = useContext(AppContext)
 
   const contactCard = ()=>{
-    updateUser({Name, contactNum})
+    updateUser({
+      name: Name,
+      contact: contactNum
+    })
   }
 
   return (

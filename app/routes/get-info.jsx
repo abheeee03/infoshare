@@ -14,7 +14,14 @@ export default function getInfo() {
     })
   }, [])
   const router = useRouter();
-  const {userContact, userData} = useContext(AppContext)
+  const { userData} = useContext(AppContext)
+  const contactCard = `
+BEGIN:VCARD
+VERSION:3.0
+FN:${userData.name}
+TEL;TYPE=CELL:${userData.contact}
+END:VCARD
+`;
   return (
     <View style={{
       padding: 30,
@@ -46,7 +53,7 @@ export default function getInfo() {
         userData.name
        } 
       </Text>
-      <QRCode value={userContact.toString()} size={200} />
+      <QRCode value={contactCard.toString().trim()} size={200} />
       {/* <Image source={require("@/assets/images/qr.png")} /> */}
       <Text style={{
         fontSize: 20,
